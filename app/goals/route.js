@@ -3,8 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
     // model() { .. } ??
     model: function(params) {
-        return null;
-        // how would the call below work?
         return this.get('store').find('goals/goal');
     },
 
@@ -12,6 +10,15 @@ export default Ember.Route.extend({
 
         edit() {
             this.controllerFor('goals.goal').set('isEditing', true);
+        },
+        doneEditing() {
+            this.controllerFor('goals.goal').set('isEditing', false);
+            this.modelFor('goals.goal').save();
+        },
+        deleteGoal() {
+            this.modelFor('goals.goal').destroyRecord().then(() => {
+                this.transitionTo('goals');
+            });
         },
         createGoal() {
             this.send('edit');
