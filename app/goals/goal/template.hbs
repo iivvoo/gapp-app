@@ -1,0 +1,13 @@
+{{#if isEditing}}
+        <button {{action 'doneEditing'}}>Done</button>
+        {{partial 'goals/goal/goal-edit'}}
+{{else}}
+        <button {{action 'edit'}}>Edit</button>
+{{/if}}
+
+<h1>{{title}}</h1>
+
+<div class='below-the-fold'>
+        {{model.body}}
+</div>
+
