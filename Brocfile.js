@@ -20,8 +20,5 @@ var app = new EmberApp();
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 
-app.import('bower_components/pouchdb/dist/pouchdb.js');
-app.import('bower_components/relational-pouch/dist/pouchdb.relational-pouch.js');
-app.import('bower_components/ember-pouch/dist/globals/main.js');
 
 module.exports = app.toTree();

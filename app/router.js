@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('goals', function() {
       this.route('goal', {path: ':goal_id'});
   });
+  this.route('task', {path: ':task_id'});
 });
 
 export default Router;

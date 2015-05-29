@@ -1,17 +1,25 @@
 import config from '../config/environment';
 
+import EmberPouch from 'ember-pouch';
+
 var db = new PouchDB('local1'); //config.local_couch || 'bloggr');
-//var remote = new PouchDB(config.remote_couch, {ajax: {timeout: 20000}});
+var remote = new PouchDB("http://ivo:ivo@localhost:5984/hamster", {ajax: {timeout: 20000}});
 
-//db.sync(remote, {live: true, retry: true});
+db.sync(remote, {live: true, retry: true});
 
-console.log("********** adapter init");
 
 PouchDB.debug.enable('');
 
 export default EmberPouch.Adapter.extend({
+  defaultSerializer: "pouchserial",
   db: db,
   
+  createRecord: function(store, type, record) {
+      return this._super(store, type, record);
+  },
+  updateRecord: function(store, type, record) {
+      return this._super(store, type, record);
+  },
   // Change watcher for ember-data
   immediatelyLoadAllChangedRecords: function() {
     this.db.changes({
