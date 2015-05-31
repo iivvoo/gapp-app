@@ -2,7 +2,7 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
     model(params) {
-        return this.get('store').find('goals/goal', params.goal_id);
+        return this.get('store').find('goal', params.goal_id);
     },
 
     actions: {
