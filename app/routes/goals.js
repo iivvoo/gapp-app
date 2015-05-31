@@ -9,14 +9,14 @@ export default Ember.Route.extend({
     actions: {
 
         edit() {
-            this.controllerFor('goals.goal').set('isEditing', true);
+            this.controllerFor('goal').set('isEditing', true);
         },
         doneEditing() {
-            this.controllerFor('goals.goal').set('isEditing', false);
-            this.modelFor('goals.goal').save();
+            this.controllerFor('goal').set('isEditing', false);
+            this.modelFor('goal').save();
         },
         deleteGoal() {
-            this.modelFor('goals.goal').destroyRecord().then(() => {
+            this.modelFor('goal').destroyRecord().then(() => {
                 this.transitionTo('goals');
             });
         },
@@ -27,7 +27,7 @@ export default Ember.Route.extend({
 
             this.send('edit');
 
-            store.createRecord('goals/goal', {title: name}).save().then(goal => {
+            store.createRecord('goal', {title: name}).save().then(goal => {
                 controller.set('newGoal', '');
                 this.transitionTo('goals.goal', goal);
             });

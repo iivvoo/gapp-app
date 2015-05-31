@@ -2,6 +2,7 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
     model(params) {
+        console.log("Hoi");
         return this.get('store').find('goal', params.goal_id);
     },
 
