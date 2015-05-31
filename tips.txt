@@ -1,0 +1,5 @@
+<iivvoo> what's the correct way to update a package using ember-cli? Speficially ember-data
+<iivvoo> I see it listed in both package.json and bower.json
+<locks> iivvoo: open bower.json, update to the version you want
+<locks> run bower install
+<chillan> iivvoo: npm-check-updates and bower list are what I use

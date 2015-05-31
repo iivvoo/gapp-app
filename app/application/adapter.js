@@ -1,4 +1,5 @@
 import config from '../config/environment';
+import Ember from 'ember';
 
 import EmberPouch from 'ember-pouch';
 
@@ -10,16 +11,22 @@ db.sync(remote, {live: true, retry: true});
 
 PouchDB.debug.enable('');
 
+
+const {
+  run: {
+    bind
+  },
+  on,
+  String: {
+    pluralize,
+    classify
+  }
+} = Ember;
+
 export default EmberPouch.Adapter.extend({
   defaultSerializer: "pouchserial",
   db: db,
-  
-  createRecord: function(store, type, record) {
-      return this._super(store, type, record);
-  },
-  updateRecord: function(store, type, record) {
-      return this._super(store, type, record);
-  },
+
   // Change watcher for ember-data
   immediatelyLoadAllChangedRecords: function() {
     this.db.changes({

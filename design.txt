@@ -1,0 +1,47 @@
+Home Screen
+-----------
+
+Toont recente / actieve goals, toont de eerste paar expiring taken
+
+Je kan er doorklikken naar goals of tasks
+
+
+Taks view
+---------
+
+Een task wordt in de context van een goal getoond
+
+Datamodel
+=========
+
+Algemeen
+--------
+
+Objecten kunnen slugs hebben. Deze slugs kunnen fungeren als tag en daarmee
+gekoppeld worden
+
+Goal
+----
+
+Een goal is een doel, een topic. Kan een onderzoeksdoel, interessegebied,
+project zijn.
+
+Moet waarschijnlijk onder een soort organisatie hangen (danwel eraan gekoppeld
+zijn)
+
+Task
+----
+
+Een uit tevoeren taak, optioneel met deadline. Aan een taak kan research
+vastzitten die bewaard moet blijven
+
+Note
+----
+
+Een notitie is een stuk kennis dat bewaard moet blijven. Subtypes:
+
+- notitie
+- secret
+- resource
+
+

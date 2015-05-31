@@ -1,23 +1,20 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4">
-            <button {{action 'createGoal'}}>Create</button> {{input type="text" value=query placeholder="Filter Posts" autofocus="autofocus"}}
-            <table class='table'>
-                <thead>
-                    <tr><th>Recent Goals</th></tr>
-                </thead>
-                <tbody>
-                {{#each arrangedContent as |goal|}}
-                <tr>
-                    <td>
-                        {{#link-to 'goals.goal' goal.id}}
-                            {{goal.title}}
-                        {{/link-to}}
-                    </td>
-                </tr>
-                {{/each}}
-                </tbody>
-            </table>
+            <div class="list-group">
+                <div class="list-group-item">
+                    {{input type="text" class="new-goal" placeholder="New Goal" value=newGoal}}
+                    <button class="btn btn-primary btn-sm new-goal-button" {{action "createGoal"}}
+                            {{bind-attr disabled=disabled}}>Add</button>
+                </div>
+            </div>
+            {{#each arrangedContent as |goal|}}
+                <div class="list-group-item">
+                    {{#link-to 'goals.goal' goal.id}}
+                        {{goal.title}}
+                    {{/link-to}}
+                </div>
+            {{/each}}
         </div>
 
         <div class="col-md-8">
