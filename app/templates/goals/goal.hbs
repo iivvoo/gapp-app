@@ -1,6 +1,6 @@
 <div class="list-group">
     <div class="list-group-item">
-        {{input type="text" class="new-task" placeholder="New Task" value=newTask}}
+        {{input type="text" class="new-task" placeholder=newTaskPlaceholder value=newTask}}
         <button class="btn btn-primary btn-sm new-artist-button" {{action "createTask"}}
                 {{bind-attr disabled=disabled}}>Add</button>
     </div>
