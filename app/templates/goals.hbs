@@ -9,11 +9,9 @@
                 </div>
             </div>
             {{#each arrangedContent as |goal|}}
-                <div class="list-group-item">
-                    {{#link-to 'goals.goal' goal.id}}
-                        {{goal.title}}
-                    {{/link-to}}
-                </div>
+                {{#link-to 'goals.goal' goal.id class="list-group-item" }}
+                    {{goal.title}}
+                {{/link-to}}
             {{/each}}
         </div>
 

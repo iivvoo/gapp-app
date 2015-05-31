@@ -6,6 +6,11 @@ export default Ember.Route.extend({
         return this.get('store').find('goal', params.goal_id);
     },
 
+    afterModel: function(model) {
+      var goalTitle = this.modelFor('goals/goal').get('title');
+      Ember.$(document).attr('title', `Gap: ${goalTitle}`);
+    },
+
     actions: {
         createTask() {
             var store = this.get('store');
