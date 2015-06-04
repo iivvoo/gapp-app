@@ -8,7 +8,8 @@ export default Ember.Route.extend({
 
     actions: {
 
-        edit() {
+        editGoal() {
+            console.log("EDIT!");
             this.controllerFor('goals.goal').set('isEditing', true);
         },
         doneEditing() {

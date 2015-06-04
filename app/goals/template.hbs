@@ -13,6 +13,7 @@
                     {{#link-to 'goals.goal' goal.id}}
                         {{goal.title}}
                     {{/link-to}}
+                    <button class="btn btn-primary btn-xs pull-right" {{action "editGoal" }}>Edit</button>
                 </div>
             {{/each}}
         </div>
