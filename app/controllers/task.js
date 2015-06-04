@@ -1,7 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    frop: 'lala',
+
     stateChange: function() {
         console.log("State changed?!");
-    }.observexxxs("model.isCompleted")
+    }.observes("isCompleted"),
+
+    actions: {
+        frop: function() {
+            console.log("FRAP!");
+        }
+    }
 });
