@@ -6,6 +6,6 @@ export default DS.Model.extend({
     title: DS.attr('string', {defaultValue: ""}),
     body: DS.attr('string', {defaultValue: ""}),
     isCompleted: DS.attr('boolean'),
-    date: DS.attr('date'),
+    date: DS.attr('datetime'),
     rev: DS.attr('string')
 });
