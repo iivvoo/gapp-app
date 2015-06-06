@@ -2,14 +2,13 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
-/*var app = new EmberAddon({
+var app = new EmberApp({
   'ember-bootstrap-datetimepicker': {
     "importBootstrapCSS": true,
     "importBootstrapJS": true,
     "importBootstrapTheme": true
   }
-}); */
+});
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
@@ -24,8 +23,8 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('bower_components/bootstrap/dist/js/bootstrap.js');
-app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+//app.import('bower_components/bootstrap/dist/js/bootstrap.js');
+//app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 
 
 module.exports = app.toTree();
