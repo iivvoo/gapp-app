@@ -19,8 +19,8 @@
     </form>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-success" {{action "saveTask"}}>Save</button>
-            <button class="btn btn-default" {{action "cancelTask"}}>Cancel</button>
+            <button class="btn btn-success pull-right" {{action "saveTask"}}>Save</button>
+            <button class="btn btn-default pull-right" {{action "cancelTask"}}>Cancel</button>
         </div>
     </div>
 {{else}}
@@ -31,9 +31,30 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-4">
+            <b>Deadline</b>
+        </div>
+        <div class="col-md-8">
+            {{model.date}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <b>Completed</b>
+        </div>
+        <div class="col-md-8">
+            {{#if model.isCompleted }}
+            Yes
+            {{else}}
+            No
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-default" {{action "editTask"}}>Edit</button>
-            <button class="btn btn-danger" {{action "deleteTask"}}>Delete</button>
+            <button class="btn btn-default pull-right" {{action "editTask"}}>Edit</button>
+            <button class="btn btn-danger pull-right" {{action "deleteTask"}}>Delete</button>
         </div>
     </div>
 {{/if}}
