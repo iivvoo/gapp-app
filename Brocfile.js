@@ -1,14 +1,11 @@
 /* global require, module */
+'use strict';
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var path = require('path');
 
-var app = new EmberApp({
-  'ember-bootstrap-datetimepicker': {
-    "importBootstrapCSS": true,
-    "importBootstrapJS": true,
-    "importBootstrapTheme": true
-  }
-});
+var app = new EmberApp();
+var bootstrapPath   = path.join(app.bowerDirectory,'/bootstrap/dist/');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
@@ -23,8 +20,13 @@ var app = new EmberApp({
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-//app.import('bower_components/bootstrap/dist/js/bootstrap.js');
-//app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+app.import(path.join(bootstrapPath, 'js/bootstrap.js'));
+app.import(path.join(bootstrapPath, 'css/bootstrap.css'));
+app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.eot'), { destDir: '/fonts' });
+app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.svg'), { destDir: '/fonts' });
+app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.ttf'), { destDir: '/fonts' });
+app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.woff'), { destDir: '/fonts' });
+app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.woff2'), { destDir: '/fonts'});
 
 
 module.exports = app.toTree();
