@@ -2,7 +2,17 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
     model(params) {
-        return this.get('store').find('goals/goal', params.goal_id);
+        return this.get('store').find('goal', params.goal_id);
+    },
+
+    afterModel: function(model) {
+      var goalTitle = this.modelFor('goals/goal').get('title');
+      Ember.$(document).attr('title', `Gap: ${goalTitle}`);
+    },
+
+    setupController: function(controller, model) {
+        this._super(controller, model);
+        controller.set('goal', this.modelFor('goals/goal'));
     },
 
     actions: {

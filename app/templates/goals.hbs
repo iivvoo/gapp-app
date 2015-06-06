@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4">
+            <h2>Goals</h2>
             <div class="list-group">
                 <div class="list-group-item">
                     {{input type="text" class="new-goal" placeholder="New Goal" value=newGoal}}
@@ -10,9 +11,10 @@
             </div>
             {{#each arrangedContent as |goal|}}
                 <div class="list-group-item">
-                    {{#link-to 'goals.goal' goal.id}}
+                    {{#link-to 'goals.goal' goal.id }}
                         {{goal.title}}
                     {{/link-to}}
+                    <button class="btn btn-primary btn-xs pull-right" {{action "editGoal" }}>Edit</button>
                 </div>
             {{/each}}
         </div>
