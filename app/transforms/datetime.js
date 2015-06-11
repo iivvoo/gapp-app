@@ -6,6 +6,9 @@ export default DS.Transform.extend({
     return moment(serialized);
   },
   serialize: function(deserialized) {
-    return deserialized.toISOString();
+    if(deserialized) {
+        return deserialized.toISOString();
+    }
+    return null;
   }
 });
