@@ -4,6 +4,10 @@ export default Ember.Controller.extend({
     needs: 'task',
     isEditing: false,
 
+    date_or_notset: function() {
+        return this.get('model.date') || "not set";
+    }.property("model.date"),
+
     actions: {
         editTask: function() {
             this.set('isEditing', true);
