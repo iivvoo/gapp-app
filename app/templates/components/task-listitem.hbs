@@ -1,5 +1,9 @@
 <div class="checkbox">
     <label>
         {{input type="checkbox" action=frop checked=task.isCompleted}} {{task.title}}
+        {{#if date}}
+        <br>
+        <small>{{date}}</small>
+        {{/if}}
     </label>
 </div>
