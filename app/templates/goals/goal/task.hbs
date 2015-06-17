@@ -8,6 +8,18 @@ A {{task_priorities}} B
             <label for="taskBody">Details</label>
             {{textarea class="form-control" id="taskBody" value=model.body}}
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <b>Priority</b>
+            </div>
+            <div class="col-md-8">
+                {{view "select" content=task_priorities
+                                optionValuePath="content.prio"
+                                optionLabelPath="content.label"
+                                selection=model.priority
+                                classNames="form-control"}}
+            </div>
+        </div>
         <div class="checkbox">
             <label>
                 {{input type="checkbox" checked=model.isCompleted }} Completed
@@ -29,6 +41,14 @@ A {{task_priorities}} B
     <div class="row">
         <div class="col-md-12">
             {{model.body}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <b>Priority</b>
+        </div>
+        <div class="col-md-8">
+            {{model.priority}}
         </div>
     </div>
     <div class="row">
