@@ -7,8 +7,5 @@ export default Ember.ArrayController.extend({
 
     disabled: Ember.computed('newGoal', function() {
         return Ember.isEmpty(this.get('newGoal'));
-    }),
-    xxxx: function() {
-        console.log("Something changed");
-    }.observes("content.tasks.@each.isCompleted")
+    })
 });

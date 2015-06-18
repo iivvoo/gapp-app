@@ -10,7 +10,6 @@ export default Ember.Route.extend({
     actions: {
 
         editGoal() {
-            console.log("EDIT!");
             this.controllerFor('goals.goal').set('isEditing', true);
         },
         createGoal() {

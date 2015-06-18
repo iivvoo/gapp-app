@@ -4,9 +4,11 @@
             <h2>Goals</h2>
             <div class="list-group">
                 <div class="list-group-item">
-                    {{input type="text" class="new-goal" placeholder="New Goal" value=newGoal}}
-                    <button class="btn btn-primary btn-sm new-goal-button" {{action "createGoal"}}
-                            {{bind-attr disabled=disabled}}>Add</button>
+                    <form {{ action "createGoal" on="submit" }}>
+                        {{input type="text" class="new-goal" placeholder="New Goal" value=newGoal}}
+                        <button type="submit" class="btn btn-primary btn-sm new-goal-button"
+                                {{bind-attr disabled=disabled}}>Add</button>
+                    </form>
                 </div>
             </div>
             {{#each arrangedContent as |goal|}}

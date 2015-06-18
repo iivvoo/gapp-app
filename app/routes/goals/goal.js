@@ -28,9 +28,11 @@ export default Ember.Route.extend({
 
             store.createRecord('task', {title: name, goal: goal}).save().then(task => {
                 goal.get('tasks').pushObject(task);
-                return goal.save();
-            }).then(goal => {
-                controller.set('newTask', '');
+
+                return goal.save().then(goal => {
+                    controller.set('newTask', '');
+                    return this.transitionTo('goals.goal.task', task, {queryParams: {isEditing: true}});
+                });
             });
         }
     }
