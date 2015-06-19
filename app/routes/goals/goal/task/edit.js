@@ -1,11 +1,9 @@
-import Ember from 'ember';
-
 export default Ember.Route.extend({
-    xsetupController: function(controller, model) {
+    setupController: function(controller, model) {
         // controllers are singletons!
         this._super(controller, model);
-        controller.set('isEditing', false);
-        console.log("setup");
+        controller.set('isEditing', true);
+        console.log("edit setup");
     },
     xresetController: function (controller, isExiting, transition) {
         console.log('reset');

@@ -7,7 +7,7 @@ export default Ember.Route.extend({
         controller.set('isEditing', false);
         console.log("setup");
     },
-    xresetController: function (controller, isExiting, transition) {
+    resetController: function (controller, isExiting, transition) {
         console.log('reset');
         controller.set('isEditing', false);
     }
