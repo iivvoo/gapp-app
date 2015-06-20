@@ -29,11 +29,9 @@
         </div>
     </div>
     {{#each tasks as |task|}}
-        <div class="list-group-item">
-            {{#link-to 'goals.goal.task' task.id }}
-                {{ task-listitem task=task }}
-            {{/link-to}}
-        </div>
+        {{#link-to 'goals.goal.task' task.id class="list-group-item selection-link"}}
+            {{ task-listitem task=task }}
+        {{/link-to}}
     {{/each}}
     </div>
     <div class="col-md-6">

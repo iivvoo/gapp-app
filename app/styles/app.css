@@ -1,0 +1,10 @@
+.selection-link .pointer {
+  float: right;
+  display: none;
+}
+
+.selection-link.active .pointer {
+  display: block;
+}
+
+
