@@ -23,6 +23,6 @@ export default Ember.Component.extend({
     }.property('task.priority', 'configuration.task_priorities'),
 
     handleCompleted: function() {
-        this.task.save();
+        //this.task.save();
     }.observes('task.isCompleted')
 });
