@@ -22,6 +22,8 @@ export default Ember.Controller.extend({
 
     actions: {
         saveTask: function() {
+            this.set('model.date', null); // make sure we're not restoring invalid dates
+
             if(this.get('work.date') && this.get('work.date').isValid()) {
                 this.set('model.date', this.get('work.date').toDate());
             }
