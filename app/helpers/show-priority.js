@@ -8,10 +8,13 @@ export default Ember.Helper.extend({
 
         for(var prio of configuration.get('task_priorities')) {
             if(prio.prio == priority) {
-                return Ember.String.htmlSafe(`<span class="label label-${prio.cssclass}">${prio.label}</span>`);
+                if(prio.cssclass) {
+                    return Ember.String.htmlSafe(`<span class="label label-${prio.cssclass}">${prio.label}</span>`);
+                }
+                return '';
             }
         }
 
-      return '';
+        return '';
     }
 });

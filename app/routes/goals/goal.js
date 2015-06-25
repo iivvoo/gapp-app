@@ -31,7 +31,7 @@ export default Ember.Route.extend({
 
                 return goal.save().then(goal => {
                     controller.set('newTask', '');
-                    return this.transitionTo('goals.goal.task', task, {queryParams: {isEditing: true}});
+                    return this.transitionTo('goals.goal.task.edit', task);
                 });
             });
         }
