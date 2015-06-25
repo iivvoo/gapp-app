@@ -5,6 +5,10 @@
         <br>
         <small>{{date}}</small>
         {{/if}}
+        {{do-highlight task.title}}
+        {{#if priority}}
+            <span class="label label-{{priority.cssclass}}">{{priority.label}}</span>
+        {{/if}}
 
     </label>
     <span class="pointer glyphicon glyphicon-chevron-right"></span>

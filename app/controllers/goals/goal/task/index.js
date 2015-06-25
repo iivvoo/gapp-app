@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    needs: ['configuration'],
+    configuration: Ember.inject.service(),
 
     date_or_notset: function() {
         return this.get('model.date') || "not set";

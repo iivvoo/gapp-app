@@ -1,11 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    needs: ['configuration'],
+    configuration: Ember.inject.service(),
 
-    task_priorities: function() {
-        return this.get('controllers.configuration.task_priorities')();
-    }.property('controllers.configuration.task_priorities'),
+    task_priorities: Ember.computed.alias('configuration.task_priorities'),
 
     actions: {
         saveTask: function() {

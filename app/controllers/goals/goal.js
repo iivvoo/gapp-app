@@ -7,13 +7,8 @@ export default Ember.Controller.extend({
     isEditing: false,
     somevar: "Hello Goal",
 
-    tasks: function() {
-        return Ember.ArrayProxy.extend(Ember.SortableMixin).create(
-                    {
-                        content: this.get('goal.tasks'),
-                        sortProperties: ['date', 'priority']
-                    });
-    }.property('goal.tasks'),
+    sortProperties: ['sortableDate:asc', 'sortablePriority:desc'],
+    sortedTasks: Ember.computed.sort('goal.tasks', 'sortProperties'),
 
     disabled: Ember.computed('newTask', function() {
         return Ember.isEmpty(this.get('newTask'));
