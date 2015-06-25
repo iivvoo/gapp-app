@@ -26,6 +26,9 @@
               <button type="submit" class="btn btn-primary btn-sm new-artist-button"
                       {{bind-attr disabled=disabled}}>Add</button>
             </form>
+            <label>
+            {{input type="checkbox" checked=showCompleted }} show completed items
+            </label>
         </div>
     </div>
     {{#each sortedTasks as |task|}}
