@@ -15,9 +15,7 @@ export default Ember.Controller.extend({
             if(conf) {
                 let parent = this.get('model.goal');
 
-                console.log("B", parent.get('tasks'));
                 parent.get('tasks').removeObject(this.get('model'));
-                console.log("A", parent.get('tasks'));
 
                 parent.save().then(() => {
                     this.get('model').destroyRecord();
