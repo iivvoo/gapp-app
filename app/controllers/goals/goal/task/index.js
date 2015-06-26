@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
                 parent.get('tasks').removeObject(this.get('model'));
                 console.log("A", parent.get('tasks'));
 
-                parent.save().then(goal => {
+                parent.save().then(() => {
                     this.get('model').destroyRecord();
                 }).then(() => {
                     this.transitionToRoute('goals.goal');
