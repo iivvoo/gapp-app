@@ -8,3 +8,13 @@
 }
 
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.task-listitem > div {
+    display: flex;
+    flex-direction: row;
+}

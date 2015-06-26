@@ -1,12 +1,20 @@
-<div class="checkbox">
-    <label>
-        {{input type="checkbox" action=frop checked=task.isCompleted}} {{task.title}}
+<div class="row">
+    <div class="col-xs-2">
+        {{#if task.isCompleted }}
+            <div class="btn btn-default btn-xs glyphicon glyphicon-check" {{action "toggleCompleted"}}></div>
+        {{else}}
+            <div class="btn btn-default btn-xs glyphicon glyphicon-unchecked" {{action "toggleCompleted"}}></div>
+        {{/if}}
+    </div>
+    <div class="col-xs-10">
+        {{task.title}}
+        <span class="pull-right pointer glyphicon glyphicon-chevron-right"></span>
+
         {{#if date}}
         <br>
-        <small>{{date}}</small>
+        <small class="visible-sm visible-md">{{date}}</small>
         {{/if}}
         {{show-priority task.priority}}
 
-    </label>
-    <span class="pointer glyphicon glyphicon-chevron-right"></span>
+    </div>
 </div>

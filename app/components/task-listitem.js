@@ -13,16 +13,10 @@ export default Ember.Component.extend({
         return null;
     }.property("task.date"),
 
-    priority: function() {
-        for(var prio of this.get('configuration.task_priorities')) {
-            if(prio.prio == this.get('task.priority')) {
-                return prio;
-            }
+    actions: {
+        toggleCompleted: function() {
+            this.set("task.isCompleted", !this.get("task.isCompleted"));
+            this.get("task").save()
         }
-        return null;
-    }.property('task.priority', 'configuration.task_priorities'),
-
-    handleCompleted: function() {
-        //this.task.save();
-    }.observes('task.isCompleted')
+    }
 });
