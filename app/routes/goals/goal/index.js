@@ -1,7 +1,8 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
-    model(params) {
+    xmodel(params) {
+        console.log(params, params.goal_id);
         return this.get('store').find('goal', params.goal_id);
     },
 
