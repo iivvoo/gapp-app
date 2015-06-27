@@ -8,13 +8,12 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('goals', function() {
       this.route('goal', {path: ':goal_id'}, function() {
-          this.route('edit', {path: 'edit'}),
+          this.route('edit'),
           this.route('task', {path: ':task_id'}, function() {
               this.route('edit');
           });
       });
   });
-  this.route('task', {path: ':task_id'});
 });
 
 export default Router;
