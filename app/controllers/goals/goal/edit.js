@@ -23,9 +23,21 @@ export default Ember.Controller.extend({
         },
         deleteGoal() {
             // delete related tasks or make them orphans?
-            console.log("Delete alles!");
-            return;
-            this.model.destroyRecord().then(() => {
+            let goal = this.get("model");
+            let tasks = goal.get("tasks");
+
+            let title = goal.get('title');
+            let conf = window.confirm(`Are you sure you want to delete "${title}" and all tasks?`);
+
+            if(!conf) {
+                return;
+            }
+
+            goal.destroyRecord().then(() => {
+                return Ember.RSVP.all(tasks.map(task => {
+                    return task.destroyRecord();
+                }));
+            }).then(() => {
                 this.transitionTo('goals');
             });
         },
