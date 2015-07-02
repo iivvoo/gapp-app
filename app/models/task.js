@@ -9,6 +9,7 @@ export default DS.Model.extend({
     isCompleted: DS.attr('boolean'),
     priority: DS.attr('number', {defaultvalue: 0}),
     date: DS.attr('date'),
+    workon: DS.attr('date', {defaultValue: null}),
     rev: DS.attr('string'),
 
     sortablePriority: function() {

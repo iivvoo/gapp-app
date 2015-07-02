@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import BaseController from './base';
 
-export default Ember.Controller.extend({
+export default BaseController.extend({
     configuration: Ember.inject.service(),
 
     date_or_notset: function() {

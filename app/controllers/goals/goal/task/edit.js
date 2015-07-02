@@ -1,16 +1,23 @@
 import Ember from 'ember';
 import moment from 'moment';
 
-export default Ember.Controller.extend({
+import BaseController from './base';
+
+export default BaseController.extend({
     configuration: Ember.inject.service(),
 
     task_priorities: Ember.computed.alias('configuration.task_priorities'),
+
+    work_today: false,
 
     work: function() {
         let d = moment(this.get('model.date'));
         if(!d.isValid()) {
             d = null;
         }
+
+        this.set('work_today', this.get('workon_today'));
+
         return Ember.Object.create({
             title: this.get('model.title'),
             body: this.get('model.body'),
@@ -24,6 +31,10 @@ export default Ember.Controller.extend({
         saveTask: function() {
             this.set('model.date', null); // make sure we're not restoring invalid dates
 
+            this.set('model.workon', null);
+            if(this.get('work_today')) {
+                this.set('model.workon', new Date());
+            }
             if(this.get('work.date') && this.get('work.date').isValid()) {
                 this.set('model.date', this.get('work.date').toDate());
             }
