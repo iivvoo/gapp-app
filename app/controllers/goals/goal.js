@@ -12,10 +12,6 @@ export default Ember.Controller.extend({
     sortedTasks: Ember.computed.sort('tasks', 'sortProperties'),
 
     tasks: function() {
-        return this.get('goal.tasks');
-    }.property('goal.tasks'),
-
-    tasks: function() {
         let showCompleted = this.get('showCompleted');
 
         return this.get('goal.tasks').filter(function(task) {

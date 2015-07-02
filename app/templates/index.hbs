@@ -12,6 +12,10 @@
             <h3>Today</h3>
             Taken die specifiek / expliciet aan vandaag zijn toegekend
             onderscheid naar todo/done (tonen)
+            <h4>Todo</h4>
+            {{ task-list tasks=model.tasks type="today" completed="no"}}
+            <h4>Done</h4>
+            {{ task-list tasks=model.tasks type="today" completed="yes"}}
         </div>
         <div class="col-md-4">
             <h3>Urgent tasks</h3>

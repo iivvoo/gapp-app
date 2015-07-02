@@ -1,0 +1,7 @@
+<ul>
+    {{#each sortedTasks as |task|}}
+        {{#link-to "goals.goal.task" task.goal.id task.id class="list-group-item selection-link" }}
+            {{ task-listitem task=task showGoal=true }}
+        {{/link-to}}
+    {{/each}}
+</ul>
