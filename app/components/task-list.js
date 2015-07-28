@@ -23,7 +23,8 @@ export default Ember.Component.extend({
             if(this.get("completed") == "yes" && !task.get('isCompleted')) {
                 return false;
             }
-            if(!this.get("completed") == "no" && task.get('isCompleted')) {
+
+            if(this.get("completed") == "no" && task.get('isCompleted')) {
                 return false;
             }
 
