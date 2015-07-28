@@ -4,7 +4,8 @@ import Ember from 'ember';
 import EmberPouch from 'ember-pouch';
 
 var db = new PouchDB('local1'); //config.local_couch || 'bloggr');
-var remote = new PouchDB("http://ivo:ivo@localhost:5984/hamster", {ajax: {timeout: 20000}});
+//var remote = new PouchDB("http://ivo:ivo@localhost:5984/hamster", {ajax: {timeout: 20000}});
+var remote = new PouchDB("http://ivo:g3h31m@rommel.m3r.nl:5984/gapp-ivo", {ajax: {timeout: 20000}});
 
 db.sync(remote, {live: true, retry: true});
 
