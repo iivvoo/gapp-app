@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-xs-2">
         {{#if task.isCompleted }}
-            <div class="btn btn-default btn-xs glyphicon glyphicon-check" {{action "toggleCompleted"}}></div>
+            <div class="btn btn-default btn-xs glyphicon glyphicon-check" {{action "toggleCompleted" bubbles=false}}></div>
         {{else}}
-            <div class="btn btn-default btn-xs glyphicon glyphicon-unchecked" {{action "toggleCompleted"}}></div>
+            <div class="btn btn-default btn-xs glyphicon glyphicon-unchecked" {{action "toggleCompleted" bubbles=false}}></div>
         {{/if}}
     </div>
     <div class="col-xs-10">

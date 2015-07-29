@@ -30,5 +30,5 @@ export default Ember.Component.extend({
 
             return true;
         });
-    }.property('tasks')
+    }.property('tasks', 'tasks.@each.isCompleted', 'completed', 'type')
 });
