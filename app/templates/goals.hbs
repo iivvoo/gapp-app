@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Goals</h2>
+            bla
             <div class="list-group">
                 <div class="list-group-item">
                     <form {{ action "createGoal" on="submit" }}>
@@ -9,9 +10,12 @@
                         <button type="submit" class="btn btn-primary btn-sm new-goal-button"
                                 {{bind-attr disabled=disabled}}>Add</button>
                     </form>
+                                    <label>
+                {{input type="checkbox" checked=showCompleted }} Show completed goals
+                </label>
                 </div>
             </div>
-            {{#each arrangedContent as |goal|}}
+            {{#each sortedGoals as |goal|}}
                 {{#link-to 'goals.goal' goal.id class="list-group-item selection-link" }}
                     {{goal.title}}
                     <span class="pointer glyphicon glyphicon-chevron-right"></span>
