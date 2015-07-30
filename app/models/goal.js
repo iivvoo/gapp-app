@@ -8,6 +8,10 @@ export default DS.Model.extend({
     rev: DS.attr('string'),
 
     isCompleted: function() {
-        return this.get('tasks').filterBy('isCompleted', false).length > 0;
+        return this.get('incompleteCount') > 0;
+    }.property('incompleteCount'),
+
+    incompleteCount: function() {
+        return this.get('tasks').filterBy('isCompleted', false).length;
     }.property('tasks.@each.isCompleted')
 });
