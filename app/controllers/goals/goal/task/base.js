@@ -10,6 +10,8 @@ export default Ember.Controller.extend({
     }.on('init'),
 
     workon_today: function() {
-        return this.get('model.workon') && moment(this.get('now')).isSame(moment(), "day");
+        let workon = this.get('model.workon');
+
+        return workon && moment(this.get('now')).isSame(moment(workon), "day");
     }.property('model.workon', 'now'),
 });
