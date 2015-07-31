@@ -13,6 +13,11 @@ Router.map(function() {
               this.route('task', {path: ':task_id'}, function() {
                   this.route('edit');
               });
+          }),
+          this.route('resources', function() {
+              this.route('resource', {path: ':resource_id'}, function() {
+                  this.route('edit');
+              });
           });
       });
   });

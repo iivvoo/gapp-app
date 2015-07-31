@@ -5,6 +5,7 @@ export default DS.Model.extend({
     body: DS.attr('string', {defaultValue: ""}),
     date: DS.attr('date'),
     tasks: DS.hasMany('task', {'async':false}),
+    resources: DS.hasMany('resource', {'async':false}),
     rev: DS.attr('string'),
 
     isCompleted: function() {

@@ -1,10 +1,10 @@
 <div>
   <ul class="nav nav-tabs" role="tablist">
         {{#link-to 'goals.goal.tasks' tagName='li'}}<a>Tasks</a>{{/link-to}}
+        {{#link-to 'goals.goal.resources' tagName='li'}}<a>Resources</a>{{/link-to}}
         {{#link-to 'goals.goal.edit' tagName='li' class="pull-right"}}<a>Edit</a>{{/link-to}}
   </ul>
 
-  <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active">
         {{outlet}}

@@ -1,0 +1,15 @@
+<form>
+    <div class="form-group">
+        {{input type="text" class="form-control input-lg" id="resourceTitle" value=work.title placeholder="Enter title"}}
+    </div>
+    <div class="form-group">
+        <label for="resourceBody">Details</label>
+        {{textarea class="form-control" id="resourceBody" value=work.body}}
+    </div>
+</form>
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-success pull-right" {{action "saveResource"}}>Save</button>
+        <button class="btn btn-default pull-right" {{action "cancelResource"}}>Cancel</button>
+    </div>
+</div>
