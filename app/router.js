@@ -9,8 +9,10 @@ Router.map(function() {
   this.route('goals', function() {
       this.route('goal', {path: ':goal_id'}, function() {
           this.route('edit'),
-          this.route('task', {path: ':task_id'}, function() {
-              this.route('edit');
+          this.route('tasks', function() {
+              this.route('task', {path: ':task_id'}, function() {
+                  this.route('edit');
+              });
           });
       });
   });

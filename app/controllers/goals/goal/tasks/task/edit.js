@@ -43,11 +43,11 @@ export default BaseController.extend({
             }
 
             this.model.save();
-            this.transitionToRoute('goals.goal.task');
+            this.transitionToRoute('goals.goal.tasks.task');
         },
         cancelTask: function() {
             // are you sure? XXX
-            this.transitionToRoute('goals.goal.task');
+            this.transitionToRoute('goals.goal.tasks.task');
         },
     }
 });

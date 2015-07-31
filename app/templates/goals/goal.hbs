@@ -14,7 +14,7 @@
             </div>
         </div>
         {{#each sortedTasks as |task|}}
-            {{#link-to 'goals.goal.task' task.id class="list-group-item selection-link"}}
+            {{#link-to 'goals.goal.tasks.task' task.id class="list-group-item selection-link"}}
                 {{ task-listitem task=task }}
             {{/link-to}}
         {{/each}}

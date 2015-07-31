@@ -32,7 +32,7 @@ export default Ember.Route.extend({
 
                 return goal.save().then(goal => {
                     controller.set('newTask', '');
-                    return this.transitionTo('goals.goal.task.edit', task);
+                    return this.transitionTo('goals.goal.tasks.task.edit', task);
                 });
             });
         }
