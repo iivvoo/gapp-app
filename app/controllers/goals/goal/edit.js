@@ -25,6 +25,7 @@ export default Ember.Controller.extend({
             // delete related tasks or make them orphans?
             let goal = this.get("model");
             let tasks = goal.get("tasks");
+            let resources = goal.get("resources");
 
             let title = goal.get('title');
             let conf = window.confirm(`Are you sure you want to delete "${title}" and all tasks?`);
@@ -37,6 +38,11 @@ export default Ember.Controller.extend({
                 return Ember.RSVP.all(tasks.map(task => {
                     return task.destroyRecord();
                 }));
+            }).then(() => {
+                return Ember.RSVP.all(resources.map(resource => {
+                    return resource.destroyRecord();
+                }));
+
             }).then(() => {
                 this.transitionTo('goals');
             });
