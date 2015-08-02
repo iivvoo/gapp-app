@@ -1,19 +1,14 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
-    xmodel(params) {
-        console.log(params, params.goal_id);
-        return this.get('store').find('goal', params.goal_id);
-    },
-
     afterModel: function(model) {
-      var goalTitle = this.modelFor('goals/goal').get('title');
+      var goalTitle = this.modelFor('goals.goal').get('title');
       Ember.$(document).attr('title', `Gap: ${goalTitle}`);
     },
 
     setupController: function(controller, model) {
         this._super(controller, model);
-        controller.set('goal', this.modelFor('goals/goal'));
+        controller.set('goal', this.modelFor('goals.goal'));
     },
 
     actions: {
@@ -25,14 +20,12 @@ export default Ember.Route.extend({
 
             var name = controller.get('newTask');
 
-            //this.send('edit');
-
             store.createRecord('task', {title: name, goal: goal}).save().then(task => {
                 goal.get('tasks').pushObject(task);
 
                 return goal.save().then(goal => {
                     controller.set('newTask', '');
-                    return this.transitionTo('goals.goal.task.edit', task);
+                    return this.transitionTo('goals.goal.tasks.task.edit', task);
                 });
             });
         }

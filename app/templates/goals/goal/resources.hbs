@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="list-group">
+            <div class="list-group-item">
+                <form {{action "createResource" on="submit" }}>
+                  {{input type="text" class="new-resource" placeholder=newResourcePlaceholder value=newResource}}
+                  <button type="submit" class="btn btn-primary btn-sm new-resource-button"
+                          {{bind-attr disabled=disabled}}>Add</button>
+                </form>
+            </div>
+        </div>
+        {{#each sortedResources as |resource|}}
+            {{#link-to 'goals.goal.resources.resource' resource.id class="list-group-item selection-link"}}
+                {{ resource-listitem resource=resource }}
+            {{/link-to}}
+        {{/each}}
+    </div>
+    <div class="col-md-6">
+        {{ outlet }}
+    </div>
+</div>
