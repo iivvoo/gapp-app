@@ -16,7 +16,7 @@
             </div>
             {{#each sortedGoals as |goal|}}
                 {{#link-to 'goals.goal' goal.id class="list-group-item selection-link" }}
-                    {{goal.title}} ({{goal.incompleteCount}})
+                    {{goal.title}} ({{goal.tasks.length}}/{{goal.incompleteCount}}/{{goal.resources.length}})
                     <span class="pointer glyphicon glyphicon-chevron-right"></span>
                 {{/link-to}}
             {{/each}}
