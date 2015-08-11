@@ -7,5 +7,5 @@ DEST="$HASH-$DATE"
 
 ember build
 rsync -av dist/ $DEPLOYHOST:gapp/$DEST
-ssh $DEPLOYHOST "cd gapp && ln -sf $DEST active"
+ssh $DEPLOYHOST "cd gapp && rm -f active && ln -sf $DEST active"
 
