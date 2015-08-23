@@ -23,7 +23,7 @@ export default BaseController.extend({
             body: this.get('model.body'),
             isCompleted: this.get('model.isCompleted'),
             date: d,
-            priority: this.get('model.priority')
+            priority: this.get('model.priority') || 0
         });
     }.property("model"), // this might/will cause the form to update values if the model changes.
 

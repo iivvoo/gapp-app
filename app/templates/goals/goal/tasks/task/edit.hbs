@@ -11,11 +11,7 @@
             <b>Priority</b>
         </div>
         <div class="col-md-8">
-            {{view "select" content=task_priorities
-                            optionValuePath="content.prio"
-                            optionLabelPath="content.label"
-                            value=work.priority
-                            classNames="form-control"}}
+            {{prio-select content=task_priorities selectedValue=work.priority action=(action (mut work.priority))}}
         </div>
     </div>
     <div class="checkbox">

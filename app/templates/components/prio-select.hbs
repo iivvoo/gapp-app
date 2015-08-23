@@ -1,0 +1,6 @@
+<select {{action 'change' on='change'}} class="form-control">
+    {{#each content as |item|}}
+        <option value="{{item.prio}}" selected={{is-equal item.prio selectedValue}}>{{item.label}}</option>
+    {{/each}}
+</select>
+
