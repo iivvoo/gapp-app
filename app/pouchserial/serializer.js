@@ -1,5 +1,3 @@
-import DS from 'ember-data';
-
 import EmberPouch from 'ember-pouch';
 
 export default EmberPouch.Serializer.extend({
@@ -20,7 +18,7 @@ export default EmberPouch.Serializer.extend({
 
       var relationshipType = snapshot.type.determineRelationshipType(relationship);
 
-      if (relationshipType === 'manyToNone' || relationshipType === 'manyToMany' || relationshipType == "manyToOne") {
+      if (relationshipType === 'manyToNone' || relationshipType === 'manyToMany' || relationshipType === "manyToOne") {
         json[payloadKey] = snapshot.hasMany(key, { ids: true });
         // TODO support for polymorphic manyToNone and manyToMany relationships
       }

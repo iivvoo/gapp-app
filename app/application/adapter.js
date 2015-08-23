@@ -1,7 +1,6 @@
-import config from '../config/environment';
-import Ember from 'ember';
-
+// import config from '../config/environment';
 import EmberPouch from 'ember-pouch';
+import PouchDB from 'pouchdb';
 
 var db = new PouchDB('local1'); //config.local_couch || 'bloggr');
 //var remote = new PouchDB("http://ivo:ivo@localhost:5984/hamster", {ajax: {timeout: 20000}});
@@ -11,18 +10,6 @@ db.sync(remote, {live: true, retry: true});
 
 
 PouchDB.debug.enable('');
-
-
-const {
-  run: {
-    bind
-  },
-  on,
-  String: {
-    pluralize,
-    classify
-  }
-} = Ember;
 
 export default EmberPouch.Adapter.extend({
   defaultSerializer: "pouchserial",

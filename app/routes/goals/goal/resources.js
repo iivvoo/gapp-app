@@ -1,7 +1,7 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
-    afterModel: function(model) {
+    afterModel: function(/*model*/) {
       // XXX shared with tasks
       var goalTitle = this.modelFor('goals.goal').get('title');
       Ember.$(document).attr('title', `Gap: ${goalTitle}`);
@@ -24,7 +24,7 @@ export default Ember.Route.extend({
             store.createRecord('resource', {title: name, goal: goal}).save().then(resource => {
                 goal.get('resources').pushObject(resource);
 
-                return goal.save().then(goal => {
+                return goal.save().then(() => {
                     controller.set('newResource', '');
                     return this.transitionTo('goals.goal.resources.resource.edit', resource);
                 });

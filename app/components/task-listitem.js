@@ -16,7 +16,7 @@ export default Ember.Component.extend({
     actions: {
         toggleCompleted: function() {
             this.set("task.isCompleted", !this.get("task.isCompleted"));
-            this.get("task").save()
+            this.get("task").save();
         }
     }
 });

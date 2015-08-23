@@ -1,7 +1,7 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
-    afterModel: function(model) {
+    afterModel: function(/*model*/) {
       var goalTitle = this.modelFor('goals.goal').get('title');
       Ember.$(document).attr('title', `Gap: ${goalTitle}`);
     },
@@ -23,7 +23,7 @@ export default Ember.Route.extend({
             store.createRecord('task', {title: name, goal: goal}).save().then(task => {
                 goal.get('tasks').pushObject(task);
 
-                return goal.save().then(goal => {
+                return goal.save().then(() => {
                     controller.set('newTask', '');
                     return this.transitionTo('goals.goal.tasks.task.edit', task);
                 });

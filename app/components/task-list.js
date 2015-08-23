@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
     /*
@@ -16,15 +17,15 @@ export default Ember.Component.extend({
     filtered: function() {
         return this.get("tasks").filter(task => {
             // XXX need trick similar to task base controller to observe date changes
-            if(this.get("type") == "today" && !task.get('workon') ||
+            if(this.get("type") === "today" && !task.get('workon') ||
                !moment(task.get('workon')).isSame(moment(), "day")) {
                 return false;
             }
-            if(this.get("completed") == "yes" && !task.get('isCompleted')) {
+            if(this.get("completed") === "yes" && !task.get('isCompleted')) {
                 return false;
             }
 
-            if(this.get("completed") == "no" && task.get('isCompleted')) {
+            if(this.get("completed") === "no" && task.get('isCompleted')) {
                 return false;
             }
 

@@ -7,7 +7,7 @@ export default Ember.Helper.extend({
         const configuration = this.get('configuration');
 
         for(var prio of configuration.get('task_priorities')) {
-            if(prio.prio == priority) {
+            if(prio.prio === priority) {
                 if(prio.cssclass) {
                     return Ember.String.htmlSafe(`<span class="label label-${prio.cssclass}">${prio.label}</span>`);
                 }

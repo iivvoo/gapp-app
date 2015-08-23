@@ -7,6 +7,6 @@ export default Ember.Service.extend({
                 {prio:20, label:"Medium", cssclass: "success"},
                 {prio:30, label:"Important", cssclass: "info"},
                 {prio:40, label:"Urgent", cssclass: "warning"},
-                {prio:50, label:"Critical", cssclass: "danger"}]
+                {prio:50, label:"Critical", cssclass: "danger"}];
     }.property()
 });

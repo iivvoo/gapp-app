@@ -5,14 +5,7 @@ export default Ember.Controller.extend({
     newResource: '',
 
     sortProperties: ['date:asc'], 
-    sortedResources: Ember.computed.sort('resources', 'sortProperties'),
-
-    resources: function() {
-        // still needed?
-        return this.get('goal.resources').filter(function(resource) {
-            return true;
-        });
-    }.property('goal.resources'),
+    sortedResources: Ember.computed.sort('goal.resources', 'sortProperties'),
 
     disabled: Ember.computed('newResource', function() {
         return Ember.isEmpty(this.get('newResource'));
