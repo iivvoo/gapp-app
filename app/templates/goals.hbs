@@ -6,8 +6,7 @@
                 <div class="list-group-item">
                     <form {{ action "createGoal" on="submit" }}>
                         {{input type="text" class="new-goal" placeholder="New Goal" value=newGoal}}
-                        <button type="submit" class="btn btn-primary btn-sm new-goal-button"
-                                {{bind-attr disabled=disabled}}>Add</button>
+                        <button type="submit" class="btn btn-primary btn-sm new-goal-button" disabled={{disabled}}>Add</button>
                     </form>
                                     <label>
                 {{input type="checkbox" checked=showCompleted }} Show completed goals

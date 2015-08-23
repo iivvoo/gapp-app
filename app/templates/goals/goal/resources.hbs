@@ -5,7 +5,7 @@
                 <form {{action "createResource" on="submit" }}>
                   {{input type="text" class="new-resource" placeholder=newResourcePlaceholder value=newResource}}
                   <button type="submit" class="btn btn-primary btn-sm new-resource-button"
-                          {{bind-attr disabled=disabled}}>Add</button>
+                          disabled={{disabled}}>Add</button>
                 </form>
             </div>
         </div>

@@ -5,7 +5,7 @@
                 <form {{action "createTask" on="submit" }}>
                   {{input type="text" class="new-task" placeholder=newTaskPlaceholder value=newTask}}
                   <button type="submit" class="btn btn-primary btn-sm new-artist-button"
-                          {{bind-attr disabled=disabled}}>Add</button>
+                          disabled={{disabled}}>Add</button>
                 </form>
                 <label>
                 {{input type="checkbox" checked=showCompleted }} show completed items
