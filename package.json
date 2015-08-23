@@ -34,6 +34,6 @@
     "ember-disable-proxy-controllers": "^0.7.0",
     "ember-export-application-global": "^1.0.2",
     "ember-pouch": "git://github.com/nolanlawson/ember-pouch.git#aa32f1d1600897a8656df9b321a1f976c1dcf2bd",
-    "ember-bootstrap-datetimepicker": "~0.4.1"
+    "ember-bootstrap-datetimepicker": "~0.4.2"
   }
 }
