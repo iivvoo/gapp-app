@@ -12,6 +12,11 @@
                       <label for="goalDescription">Details</label>
                       {{textarea class="form-control" id="goalDescription" value=work.body}}
                     </div>
+                    <div class="checkbox">
+                        <label>
+                            {{input type="checkbox" checked=work.completed }} Goal is completed
+                        </label>
+                    </div>
                 <button class="btn btn-danger pull-left" {{action "deleteGoal"}}>Delete</button>
                 <button class="btn btn-default pull-right" {{action "cancelEdit"}}>Cancel</button>
                 <button class="btn btn-success pull-right" {{action "saveGoal"}}>Save</button>

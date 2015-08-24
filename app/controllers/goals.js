@@ -13,9 +13,9 @@ export default Ember.ArrayController.extend({
         let showCompleted = this.get('showCompleted');
 
         return this.get('model').filter(function(goal) {
-            return showCompleted || goal.get('isCompleted');
+            return showCompleted || !goal.get('completed');
         });
-    }.property('@each.isCompleted', 'showCompleted'),
+    }.property('@each.completed', 'showCompleted'),
 
     disabled: Ember.computed('newGoal', function() {
         return Ember.isEmpty(this.get('newGoal'));

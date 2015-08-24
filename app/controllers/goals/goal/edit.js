@@ -4,13 +4,14 @@ export default Ember.Controller.extend({
     work: function() {
         return Ember.Object.create({
             title: this.get('model.title'),
-            body: this.get('model.body')
+            body: this.get('model.body'),
+            completed: this.get('model.completed')
         });
     }.property('model'),
 
     actions: {
         saveGoal: function() {
-            for(var attr of ["title", "body"]) {
+            for(var attr of ["title", "body", "completed"]) {
                 this.set(`model.${attr}`, this.get(`work.${attr}`));
             }
 
