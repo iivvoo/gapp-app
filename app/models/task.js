@@ -9,7 +9,8 @@ export default DS.Model.extend({
     isCompleted: DS.attr('boolean'),
     priority: DS.attr('number', {defaultvalue: 0}),
     date: DS.attr('date'),
-    workon: DS.attr('date', {defaultValue: null}),
+    workon: DS.attr('date', {defaultValue: null}), // XXX rename?
+    completedDate: DS.attr('date', {defaultValue: null}),
     rev: DS.attr('string'),
 
     sortablePriority: function() {
@@ -23,5 +24,10 @@ export default DS.Model.extend({
         }
         // use created + fixed time. This way earlier created takes slight priority.
         return new Date(2090, 1, 1);
-    }.property('date')
+    }.property('date'),
+
+    setCompletedDate: function() {
+        this.set('completedDate', new Date());
+    }.observes('isCompleted')
+
 });
