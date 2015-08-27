@@ -17,8 +17,8 @@ export default Ember.Component.extend({
     filtered: function() {
         return this.get("tasks").filter(task => {
             // XXX need trick similar to task base controller to observe date changes
-            if(this.get("type") === "today" && !task.get('workon') ||
-               !moment(task.get('workon')).isBefore(moment())) {
+            if(this.get("type") === "on_plate" && (!task.get('workon') ||
+               !moment(task.get('workon')).isBefore(moment()))) {
                 return false;
             }
             if(this.get("completed") === "yes" && !task.get('isCompleted')) {
@@ -37,5 +37,5 @@ export default Ember.Component.extend({
 
             return true;
         });
-    }.property('tasks', 'tasks.@each.isCompleted', 'completed', 'type')
+    }.property('tasks', 'tasks.@each.isCompleted', 'task.@each.workon', 'task.@each.completedDate', 'completed', 'type')
 });
