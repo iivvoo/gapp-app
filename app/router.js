@@ -24,29 +24,4 @@ Router.map(function() {
   });
 });
 
-/*
-Router.map(function() {
-  this.route('goals', function() {
-    this.route('goal', { path: ':goal_id' }, function() { // show
-      this.route('tasks', function() {
-        this.route('task', {  // show
-          path: ':task_id'
-        });
-        this.route('edit', {
-          path: ':task_id/edit'
-        });
-      });
-      this.route('resources', function() {
-        this.route('resource', {  // show
-          path: ':resource_id'
-        });
-        this.route('edit', {
-          path: ':resource_id/edit'
-        });
-      });
-    });
-  });
-});
-*/
-
 export default Router;
