@@ -4,11 +4,9 @@ import moment from 'moment';
 export default Ember.Component.extend({
     /*
      * arguments:
-     * completed: null, no, yes: shows all, incomplete, completed tasks
      * type: "today": restricts taskslist for tasks marked for today
      * tasks: task model (required)
      */
-    completed: null,
     type: "default",
 
     configuration: Ember.inject.service(),
@@ -73,5 +71,5 @@ export default Ember.Component.extend({
 
     filtered: function() {
         return this.get(this.get("type"));
-    }.property("type", "on_plate", "complete")
+    }.property("type", "on_plate", "complete", "urgent")
 });
