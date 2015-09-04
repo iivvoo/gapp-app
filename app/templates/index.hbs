@@ -13,14 +13,13 @@
             Taken die specifiek / expliciet aan vandaag zijn toegekend
             onderscheid naar todo/done (tonen)
             <h4>Todo</h4>
-            {{ task-list tasks=model.tasks type="on_plate" completed="no"}}
+            {{ task-list tasks=model.tasks type="on_plate" }}
             <h4>Done</h4>
-            {{ task-list tasks=model.tasks type="today" completed="yes"}}
+            {{ task-list tasks=model.tasks type="complete" }}
         </div>
         <div class="col-md-4">
             <h3>Urgent tasks</h3>
-            binnen 2 dagen of high-prio
-            deduplicate!
+            {{ task-list tasks=model.tasks type="urgent"}}
         </div>
         <div class="col-md-4">
             <h3>Active goals</h3>

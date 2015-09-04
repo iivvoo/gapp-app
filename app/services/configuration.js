@@ -8,5 +8,8 @@ export default Ember.Service.extend({
                 {prio:30, label:"Important", cssclass: "info"},
                 {prio:40, label:"Urgent", cssclass: "warning"},
                 {prio:50, label:"Critical", cssclass: "danger"}];
+    }.property(),
+    urgent_task_threshold: function() {
+        return 30;
     }.property()
 });

@@ -9,33 +9,69 @@ export default Ember.Component.extend({
      * tasks: task model (required)
      */
     completed: null,
-    type: null,
+    type: "default",
+
+    configuration: Ember.inject.service(),
 
     sortProperties: ['sortableDate:asc', 'sortablePriority:desc'],
     sortedTasks: Ember.computed.sort('filtered', 'sortProperties'),
 
-    filtered: function() {
+    on_plate: function() {
+        let now = moment();
+
         return this.get("tasks").filter(task => {
             // XXX need trick similar to task base controller to observe date changes
-            if(this.get("type") === "on_plate" && (!task.get('workon') ||
-               !moment(task.get('workon')).isBefore(moment()))) {
+            if(task.get('isCompleted')) {
                 return false;
             }
-            if(this.get("completed") === "yes" && !task.get('isCompleted')) {
-                return false;
-            }
-
-            // it's completed but was it completed today?
-            if(this.get("completed") === "yes" &&
-               !moment(task.get('completedDate')).isSame(moment(), "day")) {
-                return false;
-            }
-
-            if(this.get("completed") === "no" && task.get('isCompleted')) {
+            if(!task.get('workon') || !moment(task.get('workon')).isBefore(now)) {
                 return false;
             }
 
             return true;
         });
-    }.property('tasks', 'tasks.@each.isCompleted', 'task.@each.workon', 'task.@each.completedDate', 'completed', 'type')
+
+    }.property("tasks.@each.workon", "tasks.@each.isCompleted"),
+
+    complete: function() {
+        let now = moment();
+
+        return this.get("tasks").filter(task => {
+            if(!task.get('isCompleted')) {
+                return false;
+            }
+
+            // it's completed but was it completed today?
+            if(!moment(task.get('completedDate')).isSame(now, "day")) {
+                return false;
+            }
+
+            return true;
+        });
+    }.property("tasks.@each.completedDate", "tasks.@each.isCompleted"),
+
+    urgent: function() {
+        let twodayslater = moment(moment() + moment.duration(2, "days"));
+        let threshold = this.get("configuration.urgent_task_threshold");
+
+        return this.get("tasks").filter(task => {
+
+            if(task.get('isCompleted')) {
+                return false;
+            }
+
+            if(moment(task.get("date")).isBefore(twodayslater)) {
+                return true;
+            }
+
+            if(task.get("priority") >= threshold) {
+                return true;
+            }
+            return false;
+        })
+    }.property("tasks.@each.date", "tasks.@each.priority", "configuration.urgent_task_threshold"),
+
+    filtered: function() {
+        return this.get(this.get("type"));
+    }.property("type", "on_plate", "complete")
 });
