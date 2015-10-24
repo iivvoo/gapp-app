@@ -15,8 +15,8 @@
     "bootstrap": "~3.3.5",
     "pouchdb": "^5.0.0",
     "relational-pouch": "^1.4.0",
-    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
-    "moment": "~2.10.3",
-    "ember-cli-moment-shim": "~0.1.0"
+    "moment": ">= 2.8.0",
+    "ember-cli-moment-shim": "~0.1.0",
+    "moment-timezone": ">= 0.1.0"
   }
 }
