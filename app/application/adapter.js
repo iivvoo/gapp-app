@@ -26,7 +26,7 @@ export default EmberPouch.Adapter.extend({
       // skip changes for non-relational_pouch docs. E.g., design docs.
       if (!obj.type || obj.type === '') { return; }
       var store = this.container.lookup('store:main');
-      store.find(obj.type);
+      store.findRecord(obj.type);
     }.bind(this));
   }.on('init')
 });
