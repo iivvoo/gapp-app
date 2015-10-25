@@ -16,7 +16,7 @@ export default BaseController.extend({
             d = null;
         }
 
-        this.set('work_today', this.get('workon_today'));
+        this.set('work_today', this.get('model.workon'));
 
         return Ember.Object.create({
             title: this.get('model.title'),
@@ -34,6 +34,9 @@ export default BaseController.extend({
             this.set('model.workon', null);
             if(this.get('work_today')) {
                 this.set('model.workon', new Date());
+            }
+            else {
+                this.set('model.workon', null);
             }
             if(this.get('work.date') && this.get('work.date').isValid()) {
                 this.set('model.date', this.get('work.date').toDate());
