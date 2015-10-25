@@ -9,10 +9,9 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 
 App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
-  Resolver: Resolver,
+  podModulePrefix: config.podModulePrefix,
+  Resolver: Resolver
 });
-
-Ember.deprecate = function() {};
 
 loadInitializers(App, config.modulePrefix);
 

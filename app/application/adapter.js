@@ -1,5 +1,5 @@
 // import config from '../config/environment';
-import EmberPouch from 'ember-pouch';
+import { Adapter } from 'ember-pouch';
 import PouchDB from 'pouchdb';
 
 var db = new PouchDB('local1'); //config.local_couch || 'bloggr');
@@ -11,9 +11,16 @@ db.sync(remote, {live: true, retry: true});
 
 PouchDB.debug.enable('');
 
-export default EmberPouch.Adapter.extend({
+export default Adapter.extend({
   defaultSerializer: "pouchserial",
   db: db,
+
+  // Change watcher for ember-data
+  // Ember Data 2.0 Reload behavior
+  shouldReloadRecord: function() { return true; },
+  shouldReloadAll: function() { return true; },
+  shouldBackgroundReloadRecord: function() { return true; },
+  shouldBackgroundReloadAll: function() { return true; },
 
   // Change watcher for ember-data
   immediatelyLoadAllChangedRecords: function() {
@@ -25,8 +32,12 @@ export default EmberPouch.Adapter.extend({
       var obj = this.db.rel.parseDocID(change.id);
       // skip changes for non-relational_pouch docs. E.g., design docs.
       if (!obj.type || obj.type === '') { return; }
-      var store = this.container.lookup('store:main');
-      store.find(obj.type);
+
+      var appController = this.container.lookup("controller:application");
+      //appController.send('kickSpin');
+
+      //var store = this.container.lookup('store:main');
+      //store.find(obj.type);
     }.bind(this));
   }.on('init')
 });
