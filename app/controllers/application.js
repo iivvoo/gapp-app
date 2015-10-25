@@ -1,12 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  bar: 10,
-
-  frop: function() {
-        console.log("He111lllo");
-  }.on('init'),
-
   actions: {
     showModal: function(name, model) {
       console.log("showModal");
