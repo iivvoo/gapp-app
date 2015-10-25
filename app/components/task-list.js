@@ -66,7 +66,7 @@ export default Ember.Component.extend({
                 return true;
             }
             return false;
-        })
+        });
     }.property("tasks.@each.date", "tasks.@each.priority", "configuration.urgent_task_threshold"),
 
     filtered: function() {

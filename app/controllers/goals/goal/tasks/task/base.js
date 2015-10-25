@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import moment from 'moment';
 
 // http://emberjs.jsbin.com/Elibefem/1/edit?html,js,output
 export default Ember.Controller.extend({
