@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     },
     actions: {
         showModal: function(name, model) {
-          console.log("showModal");
+          console.log("showModal", model);
           this.render(name, {
             into: 'application',
             outlet: 'modal',

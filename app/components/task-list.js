@@ -71,5 +71,12 @@ export default Ember.Component.extend({
 
     filtered: function() {
         return this.get(this.get("type"));
-    }.property("type", "on_plate", "complete", "urgent")
+    }.property("type", "on_plate", "complete", "urgent"),
+
+    actions: {
+        click: function(a) {
+            console.log("click", a);
+            this.get('onClick')(a);
+        }
+    }
 });

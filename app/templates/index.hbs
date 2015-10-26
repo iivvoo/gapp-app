@@ -14,7 +14,7 @@
             Taken die specifiek / expliciet aan vandaag zijn toegekend
             onderscheid naar todo/done (tonen)
             <h4>Todo</h4>
-            {{ task-list tasks=model.tasks type="on_plate" }}
+            {{ task-list tasks=model.tasks type="on_plate"  onClick=(action "showModal") }}
             <h4>Done</h4>
             {{ task-list tasks=model.tasks type="complete" }}
         </div>
