@@ -7,5 +7,6 @@ export default Ember.Route.extend({
             tasks: this.store.findAll('task'),
             goals: this.store.findAll('goal')
         });
-    }
+    },
+
 });
