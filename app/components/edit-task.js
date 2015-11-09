@@ -16,6 +16,9 @@ export default Ember.Component.extend({
          *
          * alternatives:
          * http://www.thesoftwaresimpleton.com/blog/2015/04/26/inter-component/
+         *
+         * Another alternative might be to observe a property passed from the
+         * parent and act appropriately.
          */
         console.log('Engaging hack');
         this.set('register-as', this);
@@ -58,6 +61,6 @@ export default Ember.Component.extend({
 
         console.log("Saving in edit comp");
         return this.model.save();
-    },
+    }
 
 });
