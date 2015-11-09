@@ -5,8 +5,7 @@ export default Ember.Controller.extend({
 
     actions: {
         showModal(id, model) {
-            console.log(id, model);
             this.get('modal').show('call-task-modal', model);
-        }
+        },
     }
 });

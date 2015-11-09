@@ -1,58 +1,67 @@
 {{#m3r-modal title="Task"}}
-<div class="row">
-    <div class="col-md-12">
-        {{model.body}}
+    {{#m3r-modal-body}}
+    {{# if edit}}
+    <div class="row">
+      EDit
     </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <b>Priority</b>
+    {{else}}
+    <div class="row">
+        <div class="col-md-12">
+            {{model.body}}
+        </div>
     </div>
-    <div class="col-md-8">
-        {{show-priority model.priority}}
+    <div class="row">
+        <div class="col-md-4">
+            <b>Priority</b>
+        </div>
+        <div class="col-md-8">
+            {{show-priority model.priority}}
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <b>Deadline</b>
+    <div class="row">
+        <div class="col-md-4">
+            <b>Deadline</b>
+        </div>
+        <div class="col-md-8">
+            {{date_or_notset}}
+        </div>
     </div>
-    <div class="col-md-8">
-        {{date_or_notset}}
+    <div class="row">
+        <div class="col-md-4">
+            <b>Put on plate?</b>
+        </div>
+        <div class="col-md-8">
+            {{#if model.workon }}
+            Yes
+            {{else}}
+            No
+            {{/if}}
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <b>Put on plate?</b>
+    <div class="row">
+        <div class="col-md-4">
+            <b>Completed</b>
+        </div>
+        <div class="col-md-8">
+            {{#if model.isCompleted }}
+            Yes
+            {{else}}
+            No
+            {{/if}}
+        </div>
     </div>
-    <div class="col-md-8">
-        {{#if model.workon }}
-        Yes
-        {{else}}
-        No
-        {{/if}}
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <b>Completed</b>
-    </div>
-    <div class="col-md-8">
-        {{#if model.isCompleted }}
-        Yes
-        {{else}}
-        No
-        {{/if}}
-    </div>
-</div>
+    {{/if}}
+    {{/m3r-modal-body}}
 
-<div class="row">
-    <div class="col-md-12">
-        {{#link-to "goals.goal.tasks.task.edit" model.id}}
-            <a class="btn btn-default pull-right">Edit</a>
-        {{/link-to}}
-        <button class="btn btn-danger pull-right" {{action "deleteTask"}}>Delete</button>
-    </div>
-</div>
+    {{#m3r-modal-buttons}}
+        <button type="button" class="btn btn-default" {{action "closeModal"}}>Close</button>
+        {{#if edit}}
+        <button type="button" class="btn btn-primary" {{action 'edit'}}>Save</button>
+        {{else}}
+        <button type="button" class="btn btn-primary" {{action 'edit'}}>Edit</button>
+        {{/if}}
+    {{/m3r-modal-buttons}}
+
 {{/m3r-modal}}
 
 {{yield}}

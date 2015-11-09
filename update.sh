@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm -rf node_modules bower_components dist tmo
+rm -rf node_modules bower_components dist tmp
 npm install
 bower install
 ember init
