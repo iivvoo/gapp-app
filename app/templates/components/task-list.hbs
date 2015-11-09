@@ -3,8 +3,5 @@
         <ul {{action "click" task}} class="list-group-item selection-link">
            {{ task-listitem task=task showGoal=true }}
         </ul>
-        {{#link-to "goals.goal.tasks.task" task.goal.id task.id class="list-group-item selection-link" }}
-           {{ task-listitem task=task showGoal=true }}
-        {{/link-to}}
     {{/each}}
 </ul>

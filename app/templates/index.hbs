@@ -1,17 +1,7 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
-            <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-            Zoekdingetje (in navbar?)
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-4">
             <h3>Today</h3>
-            Taken die specifiek / expliciet aan vandaag zijn toegekend
-            onderscheid naar todo/done (tonen)
             <h4>Todo</h4>
             {{ task-list tasks=model.tasks type="on_plate"  onClick=(action "showModal") }}
             <h4>Done</h4>
@@ -19,7 +9,7 @@
         </div>
         <div class="col-md-4">
             <h3>Urgent tasks</h3>
-            {{ task-list tasks=model.tasks type="urgent"}}
+            {{ task-list tasks=model.tasks type="urgent" onClick=(action "showModal") }}
         </div>
         <div class="col-md-4">
             <h3>Active goals</h3>
