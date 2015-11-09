@@ -4,6 +4,13 @@ export default Ember.Component.extend({
     modal: Ember.inject.service(),
     edit: false,
 
+    title: function() {
+        if(this.get('edit')) {
+            return 'Edit task ' + this.get('model.title');
+        }
+        return 'Task ' + this.get('model.title');
+    }.property('model.title', 'edit'),
+
     actions: {
         edit() {
             console.log("edit");
