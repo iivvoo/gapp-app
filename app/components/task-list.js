@@ -74,9 +74,8 @@ export default Ember.Component.extend({
     }.property("type", "on_plate", "complete", "urgent"),
 
     actions: {
-        click: function(a) {
-            console.log("click", a);
-            this.get('onClick')(a);
+        click: function(task) {
+            this.get('onClick')(task);
         }
     }
 });

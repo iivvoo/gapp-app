@@ -1,6 +1,6 @@
 <ul>
     {{#each sortedTasks as |task|}}
-        <ul {{action "click" task.id  task}} class="list-group-item selection-link">
+        <ul {{action "click" task}} class="list-group-item selection-link">
            {{ task-listitem task=task showGoal=true }}
         </ul>
         {{#link-to "goals.goal.tasks.task" task.goal.id task.id class="list-group-item selection-link" }}

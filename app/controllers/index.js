@@ -4,8 +4,8 @@ export default Ember.Controller.extend({
     modal: Ember.inject.service(),
 
     actions: {
-        showModal(id, model) {
-            this.get('modal').show('call-task-modal', model);
+        showModal(task) {
+            this.get('modal').show('call-task-modal', task);
         },
     }
 });

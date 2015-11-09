@@ -1,9 +1,7 @@
 {{#m3r-modal title="Task"}}
     {{#m3r-modal-body}}
-    {{# if edit}}
-    <div class="row">
-      EDit
-    </div>
+    {{#if edit}}
+        {{edit-task model=model register-as=editform save=(action 'save') }}
     {{else}}
     <div class="row">
         <div class="col-md-12">
@@ -56,7 +54,7 @@
     {{#m3r-modal-buttons}}
         <button type="button" class="btn btn-default" {{action "closeModal"}}>Close</button>
         {{#if edit}}
-        <button type="button" class="btn btn-primary" {{action 'edit'}}>Save</button>
+        <button type="button" class="btn btn-primary" {{action 'save'}}>Save</button>
         {{else}}
         <button type="button" class="btn btn-primary" {{action 'edit'}}>Edit</button>
         {{/if}}

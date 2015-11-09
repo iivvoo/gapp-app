@@ -1,0 +1,31 @@
+<form>
+    <div class="form-group">
+        {{input type="text" class="form-control input-lg" id="taskTitle" value=work.title placeholder="Enter title"}}
+    </div>
+    <div class="form-group">
+        <label for="taskBody">Details</label>
+        {{textarea class="form-control" id="taskBody" value=work.body}}
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <b>Priority</b>
+        </div>
+        <div class="col-md-8">
+            {{prio-select content=task_priorities selectedValue=work.priority action=(action (mut work.priority))}}
+        </div>
+    </div>
+    <div class="checkbox">
+        <label>
+            {{input type="checkbox" checked=work_today }} Put on plate
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            {{input type="checkbox" checked=work.isCompleted }} Completed
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="taskDeadline">Deadline</label>
+        {{bs-datetimepicker date=work.date updateDate=(action (mut work.date)) format='YYYY-MM-DD hh:mm'}}
+    </div>
+</form>
