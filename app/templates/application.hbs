@@ -1,12 +1,26 @@
 <div class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-                <div class="navbar-inner">
-                        {{#link-to 'application' class="navbar-brand"}}GAP{{/link-to}}
-                        <ul class="nav navbar-nav">
-                                <li>{{#link-to 'goals'}}Goals{{/link-to}}</li>
-                        </ul>
-                </div>
+    <div class="container-fluid">
+        <div class="navbar-inner">
+            {{#link-to 'application' class="navbar-brand"}}GAP{{/link-to}}
+            <ul class="nav navbar-nav">
+                    <li>{{#link-to 'goals'}}Goals{{/link-to}}</li>
+            </ul>
         </div>
+        <ul class="nav navbar-nav pull-right">
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="[[t 'nav.search_placeholder' ]]">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+        </ul>
+    </div>
 </div>
 {{outlet "modal"}}
 {{outlet}}
