@@ -1,7 +1,17 @@
 {{#m3r-modal title=title}}
     {{#m3r-modal-body}}
-    {{#if edit}}
+    {{#if (eq mode modes.edit)}}
         {{edit-task model=model register-as=editform save=(action 'save') }}
+    {{else if (eq mode modes.del)}}
+    <div class="row">
+        <div class="col-md-12">
+            <h4>You are about to delete</h4>
+            <p>
+            <em>{{model.title}}</em>
+            </p>
+            Are you sure?
+        </div>
+    </div>
     {{else}}
     <div class="row">
         <div class="col-md-12">
@@ -53,9 +63,12 @@
 
     {{#m3r-modal-buttons}}
         <button type="button" class="btn btn-default" {{action "closeModal"}}>Close</button>
-        {{#if edit}}
+        {{#if (eq mode modes.edit)}}
         <button type="button" class="btn btn-primary" {{action 'save'}}>Save</button>
+        {{else if (eq mode modes.del)}}
+        <button type="button" class="btn btn-danger" {{action 'delete_confirmed'}}>Yes, delete!</button>
         {{else}}
+        <button type="button" class="btn btn-danger" {{action 'delete'}}>Delete</button>
         <button type="button" class="btn btn-primary" {{action 'edit'}}>Edit</button>
         {{/if}}
     {{/m3r-modal-buttons}}
