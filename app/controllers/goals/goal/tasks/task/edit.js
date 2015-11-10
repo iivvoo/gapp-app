@@ -4,6 +4,18 @@ import moment from 'moment';
 import BaseController from './base';
 
 export default BaseController.extend({
+    modal: Ember.inject.service(),
+
+    showModal: function() {
+        console.log("showModal edit");
+        this.get('modal').show('call-task-edit-modal', this.get('model')).then(() => {
+            // not entirely sure yet about this interaction. But once done,
+            // make sure we leave the current route, else you can't reopen
+            // the current task!
+            this.transitionToRoute('goals.goal.tasks');
+        });
+    },
+
     configuration: Ember.inject.service(),
 
     task_priorities: Ember.computed.alias('configuration.task_priorities'),

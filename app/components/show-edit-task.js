@@ -8,8 +8,17 @@ export default Ember.Component.extend({
     modal: Ember.inject.service(),
     mode: view,
 
+    edit: false,
+
     modes: {del:del, view:view, edit:edit},
 
+
+    initMode: function() {
+        console.log("bla");
+        if(this.get('edit')) {
+            this.set('mode', edit);
+        }
+    }.on('init'),
 
     title: function() {
         switch(this.get('mode')) {
