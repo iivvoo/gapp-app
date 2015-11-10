@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 import ShowEditTaskComponent from './show-edit-task';
 import { view, edit, del } from './show-edit-task';
 
@@ -37,7 +35,7 @@ export default ShowEditTaskComponent.extend({
                 this.get('modal').close('delete');
                 // notification? XXX
             });
-        })
+        });
     },
 
 });

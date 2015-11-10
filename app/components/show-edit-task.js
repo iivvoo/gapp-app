@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-let edit =  Symbol("edit");
-let view =  Symbol("view");
-let del =  Symbol("delete");
+var edit = Symbol("edit");
+var view = Symbol("view");
+var del = Symbol("delete");
 
 export { edit, view, del };
 
@@ -57,7 +57,7 @@ export default Ember.Component.extend({
                 this.get('modal').close('delete');
                 // notification? XXX
             });
-        })
+        });
     },
 
     actions: {
