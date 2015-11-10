@@ -21,12 +21,10 @@ export default Ember.Component.extend({
          * Another alternative might be to observe a property passed from the
          * parent and act appropriately.
          */
-        console.log('Engaging hack');
         this.set('register-as', this);
     }.on('willInsertElement'),
 
     setupBuffer: function() {
-        console.log("setupBuffer");
         let buffer = BufferedProxy.create({
             content:this.get('model')
         });
@@ -36,7 +34,6 @@ export default Ember.Component.extend({
         if(!d.isValid()) {
             d = null;
         }
-        console.log("date", d);
         buffer.set('date', d);
 
         this.set('work_today', this.get('model.workon'));
@@ -62,7 +59,6 @@ export default Ember.Component.extend({
             this.set('model.workon', null);
         }
 
-        console.log("WD", this.get("work.date"));
         if(this.get('work.date') && this.get('work.date').isValid()) {
             this.set('model.date', this.get('work.date').toDate());
         }
