@@ -5,7 +5,7 @@
             <h4>Todo</h4>
             {{ task-list tasks=model.tasks type="on_plate"  onClick=(action "showModal") }}
             <h4>Done</h4>
-            {{ task-list tasks=model.tasks type="complete" }}
+            {{ task-list tasks=model.tasks type="complete" onClick=(action "showModal") }}
         </div>
         <div class="col-md-4">
             <h3>Urgent tasks</h3>
