@@ -1,28 +1,14 @@
 import Ember from 'ember';
 import moment from 'moment';
 import BufferedProxy from 'ember-buffered-proxy/proxy';
+import RegisterAsMixin from './register-as-mixin';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(RegisterAsMixin, {
     configuration: Ember.inject.service(),
 
     task_priorities: Ember.computed.alias('configuration.task_priorities'),
 
     work_today: false,
-
-    registerParent: function() {
-        /* http://www.samselikoff.com/blog/getting-ember-components-to-respond-to-actions/
-         * on('init') no longer works as expected. the didInsertElement is
-         * suggested as a workaround but that results in a deprecation warning
-         * about performance. willInsertElement seems to work fine
-         *
-         * alternatives:
-         * http://www.thesoftwaresimpleton.com/blog/2015/04/26/inter-component/
-         *
-         * Another alternative might be to observe a property passed from the
-         * parent and act appropriately.
-         */
-        this.set('register-as', this);
-    }.on('willInsertElement'),
 
     setupBuffer: function() {
         let buffer = BufferedProxy.create({
@@ -38,14 +24,6 @@ export default Ember.Component.extend({
 
         this.set('work_today', this.get('model.workon'));
         return buffer;
-
-        return Ember.Object.create({
-            title: this.get('model.title'),
-            body: this.get('model.body'),
-            isCompleted: this.get('model.isCompleted'),
-            date: d,
-            priority: this.get('model.priority') || 0
-        });
     }.on('init'),
 
     saveTask: function() {

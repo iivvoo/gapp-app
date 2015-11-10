@@ -4,6 +4,8 @@ let edit =  Symbol("edit");
 let view =  Symbol("view");
 let del =  Symbol("delete");
 
+export { edit, view, del };
+
 export default Ember.Component.extend({
     modal: Ember.inject.service(),
     mode: view,
@@ -33,38 +35,43 @@ export default Ember.Component.extend({
         return this.get('model.date') || "not set";
     }.property("model.date"),
 
-    actions: {
-        edit() {
-            this.set('mode', edit);
-        },
-        save() {
-            console.log("save");
-            console.log(this.get('editform'));
-
+    _save() {
             let editform = this.get('editform');
 
             editform.saveTask().then((task) => {
                 this.set('model', task);
                 this.set('mode', view);
             });
+
+    },
+    _delete() {
+        let model = this.get('model');
+
+        model.get('goal').then((goal) => {
+
+            goal.get('tasks').removeObject(this.get('model'));
+
+            goal.save().then(() => {
+                this.get('model').destroyRecord();
+            }).then(() => {
+                this.get('modal').close('delete');
+                // notification? XXX
+            });
+        })
+    },
+
+    actions: {
+        edit() {
+            this.set('mode', edit);
+        },
+        save() {
+            this._save();
         },
         delete() {
             this.set('mode', del);
         },
         delete_confirmed() {
-            let model = this.get('model');
-
-            model.get('goal').then((goal) => {
-
-                goal.get('tasks').removeObject(this.get('model'));
-
-                goal.save().then(() => {
-                    this.get('model').destroyRecord();
-                }).then(() => {
-                    this.get('modal').close('delete');
-                    // notification? XXX
-                });
-            })
+            this._delete();
         },
         closeModal() {
             this.get('modal').close('close');
