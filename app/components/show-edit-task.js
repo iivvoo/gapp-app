@@ -12,9 +12,7 @@ export default Ember.Component.extend({
 
     modes: {del:del, view:view, edit:edit},
 
-
     initMode: function() {
-        console.log("bla");
         if(this.get('edit')) {
             this.set('mode', edit);
         }

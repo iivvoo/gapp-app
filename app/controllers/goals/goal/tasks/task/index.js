@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import BaseController from './base';
 
-export default BaseController.extend({
+export default Ember.Controller.extend({
     modal: Ember.inject.service(),
 
     showModal: function() {
