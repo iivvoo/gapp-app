@@ -11,6 +11,10 @@ export default Ember.Component.extend({
         return 'Task ' + this.get('model.title');
     }.property('model.title', 'edit'),
 
+    date_or_notset: function() {
+        return this.get('model.date') || "not set";
+    }.property("model.date"),
+
     actions: {
         edit() {
             console.log("edit");

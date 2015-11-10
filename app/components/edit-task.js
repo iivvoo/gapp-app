@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import moment from 'moment';
+import BufferedProxy from 'ember-buffered-proxy/proxy';
 
 export default Ember.Component.extend({
     configuration: Ember.inject.service(),
@@ -24,14 +25,22 @@ export default Ember.Component.extend({
         this.set('register-as', this);
     }.on('willInsertElement'),
 
-    work: function() {
-        console.log("work", this.get('model'));
+    setupBuffer: function() {
+        console.log("setupBuffer");
+        let buffer = BufferedProxy.create({
+            content:this.get('model')
+        });
+        this.set('work', buffer);
+
         let d = moment(this.get('model.date'));
         if(!d.isValid()) {
             d = null;
         }
+        console.log("date", d);
+        buffer.set('date', d);
 
         this.set('work_today', this.get('model.workon'));
+        return buffer;
 
         return Ember.Object.create({
             title: this.get('model.title'),
@@ -40,10 +49,10 @@ export default Ember.Component.extend({
             date: d,
             priority: this.get('model.priority') || 0
         });
-    }.property("model"), // this might/will cause the form to update values if the model changes.
+    }.on('init'),
 
     saveTask: function() {
-        this.set('model.date', null); // make sure we're not restoring invalid dates
+        this.get('work').applyChanges();
 
         this.set('model.workon', null);
         if(this.get('work_today')) {
@@ -52,14 +61,14 @@ export default Ember.Component.extend({
         else {
             this.set('model.workon', null);
         }
+
+        console.log("WD", this.get("work.date"));
         if(this.get('work.date') && this.get('work.date').isValid()) {
             this.set('model.date', this.get('work.date').toDate());
         }
-        for(var attr of ["title", "body", "isCompleted", "priority"]) {
-            this.set(`model.${attr}`, this.get(`work.${attr}`));
+        else {
+            this.set('model.date', null);
         }
-
-        console.log("Saving in edit comp");
         return this.model.save();
     }
 
