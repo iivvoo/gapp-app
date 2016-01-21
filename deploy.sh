@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DEPLOYHOST=rommel.m3r.nl
+DEPLOYHOST=gap
 HASH=`git show --oneline | head -1 | awk '{print $1}'`
 DATE=`date +'%Y%m%d%H%M%S'`
 DEST="$HASH-$DATE"
