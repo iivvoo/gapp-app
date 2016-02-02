@@ -6,6 +6,6 @@ export default EmberPouch.Serializer.extend({
     if (this._mustSerialize(key)) {
       return true;
     }
-    return this._canSerialize(key) && (relationshipType === 'manyToNone' || relationshipType === 'manyToMany' || relationshipType == 'manyToOne');
+    return this._canSerialize(key) && (relationshipType === 'manyToNone' || relationshipType === 'manyToMany' || relationshipType === 'manyToOne');
   }
 });
