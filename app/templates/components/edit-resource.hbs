@@ -3,7 +3,15 @@
         {{input type="text" class="form-control input-lg" id="resourceTitle" value=work.title placeholder="Enter title"}}
     </div>
     <div class="form-group">
-        <label for="resourceBody">Details</label>
-        {{textarea class="form-control" id="resourceBody" value=work.body}}
+        <div class="panel panel-default">
+            <div class="panel-heading">Details</div>
+            <div class="panel-body">
+                {{textarea class="form-control" id="taskBody" value=work.body}}
+            </div>
+            <div class="panel-heading">Preview</div>
+            <div class="panel-body">
+                {{markdown-to-html markdown=work.body simplifiedAutoLink=true}}
+            </div>
+        </div>
     </div>
 </form>
