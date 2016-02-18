@@ -1,0 +1,20 @@
+{{#m3r-modal title="Connect to remote CouchDB"}}
+    {{#m3r-modal-body}}
+    <div class="row">
+        <div class="col-md-4">
+            <b>URL</b>
+        </div>
+        <div class="col-md-8">
+            {{input type="text" class="form-control" id="url"
+              value=url placeholder="Enter URL"}}
+
+        </div>
+    </div>
+    {{/m3r-modal-body}}
+
+    {{#m3r-modal-buttons}}
+        <button type="button" class="btn btn-default" {{action "save"}}>Save</button>
+        <button type="button" class="btn btn-default" {{action "closeModal"}}>Close</button>
+    {{/m3r-modal-buttons}}
+
+{{/m3r-modal}}
