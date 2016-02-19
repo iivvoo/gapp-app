@@ -10,11 +10,6 @@ export default Ember.Component.extend({
         this.set('url', this.get('remote.url'));
     }.on('didReceiveAttrs'),
 
-    /*
-     * Save, disconnect/clear, save buttons
-     * if save, store in localstorage,
-     * attempt connect
-     */
     actions: {
         disconnect() {
             let db = this.get("dbsvc");
@@ -31,6 +26,11 @@ export default Ember.Component.extend({
                 var remote = new PouchDB(url, {ajax: {timeout: 20000}});
                 db.sync(remote, {live: true, retry: true});
             }
+            this.get('modal').close('close');
+        },
+
+        disconnect() {
+            thisget("dbsvc").disconnect();
             this.get('modal').close('close');
         },
 

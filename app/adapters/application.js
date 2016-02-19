@@ -19,12 +19,15 @@ export default Adapter.extend({
 
   // Change watcher for ember-data
   immediatelyLoadAllChangedRecords: function() {
-    this.get("db").changes({
+    let db = this.get("db");
+    this.get("dbsvc").connectFromLS();
+
+    db.changes({
       since: 'now',
       live: true,
       returnDocs: false
     }).on('change', function (change) {
-      var obj = this.db.rel.parseDocID(change.id);
+      var obj = db.rel.parseDocID(change.id);
       // skip changes for non-relational_pouch docs. E.g., design docs.
       if (!obj.type || obj.type === '') { return; }
 
