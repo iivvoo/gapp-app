@@ -1,18 +1,14 @@
 // import config from '../config/environment';
+import Ember from 'ember';
 import { Adapter } from 'ember-pouch';
-import db from "./database";
-
-// var remote = new PouchDB("http://ivo:g3h31m@gap.m3r.nl:5984/gapp-ivo",
-//                          {ajax: {timeout: 20000}});
-//
-// db.sync(remote, {live: true, retry: true});
-
-
-PouchDB.debug.enable('');
 
 export default Adapter.extend({
   defaultSerializer: "pouchserial",
-  db: db,
+  dbsvc: Ember.inject.service("db"),
+
+  db: function() {
+      return this.get("dbsvc.db");
+  }.property("dbsvc"),
 
   // Change watcher for ember-data
   // Ember Data 2.0 Reload behavior
@@ -23,7 +19,7 @@ export default Adapter.extend({
 
   // Change watcher for ember-data
   immediatelyLoadAllChangedRecords: function() {
-    this.db.changes({
+    this.get("db").changes({
       since: 'now',
       live: true,
       returnDocs: false
