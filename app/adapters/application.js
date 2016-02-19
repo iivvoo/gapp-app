@@ -1,12 +1,11 @@
 // import config from '../config/environment';
 import { Adapter } from 'ember-pouch';
-import PouchDB from 'pouchdb';
+import db from "./database";
 
-var db = new PouchDB('local1'); //config.local_couch || 'bloggr');
-//var remote = new PouchDB("http://ivo:ivo@localhost:5984/hamster", {ajax: {timeout: 20000}});
-var remote = new PouchDB("http://ivo:g3h31m@gap.m3r.nl:5984/gapp-ivo", {ajax: {timeout: 20000}});
-
-db.sync(remote, {live: true, retry: true});
+// var remote = new PouchDB("http://ivo:g3h31m@gap.m3r.nl:5984/gapp-ivo",
+//                          {ajax: {timeout: 20000}});
+//
+// db.sync(remote, {live: true, retry: true});
 
 
 PouchDB.debug.enable('');
